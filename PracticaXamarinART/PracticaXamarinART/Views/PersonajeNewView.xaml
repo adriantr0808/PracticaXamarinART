@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PracticaXamarinART.Views.PersonajeNewView"
+             xmlns:local="clr-namespace:PracticaXamarinART"
+             BindingContext="{Binding Source={x:Static local:App.ServiceLocator},
+    Path=NewPersonajeViewModel}"
+             x:Name="PageNewPersonajeViewModel">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Nombre:"></Label>
+            <Entry Text="{Binding Personaje.Nombre}"></Entry>
+            <Label Text="Imagen:"></Label>
+            <Entry Text="{Binding Personaje.Imagen}"></Entry>
+            <Picker Title="Serie" ItemsSource="{Binding Series}"
+                    ItemDisplayBinding="{Binding Nombre}"
+                    SelectedItem="{Binding SelectedSerie}" />
+            <Button Text="Insertar personaje" TextColor="DarkBlue" Command="{Binding InsertarPersonaje}" CommandParameter="{Binding SelectedSerie.IdSerie}" />
+        </StackLayout>
+      
+    </ContentPage.Content>
+</ContentPage>

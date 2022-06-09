@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PracticaXamarinART.Views.SeriesListView"
+             xmlns:local="clr-namespace:PracticaXamarinART"
+             BindingContext="{Binding Source={x:Static local:App.ServiceLocator},
+    Path=SeriesViewModel}"
+             x:Name="PageSeriesView">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Series" FontSize="45"
+                VerticalOptions="Start" 
+                HorizontalOptions="CenterAndExpand" />
+            <ListView ItemsSource="{Binding Series}"
+                      RowHeight="80">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label TextColor="DarkBlue"
+                                       FontSize="25"
+                                       Text="{Binding Nombre}" />
+                                <Button Text="Detalles"
+                                        Command="{Binding BindingContext.ShowDetails, Source={x:Reference PageSeriesView}}"
+                                        CommandParameter="{Binding .}"
+                                        />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PracticaXamarinART.Views.MainMenuView"
+             xmlns:local="clr-namespace:PracticaXamarinART"
+             xmlns:behaviorspack="clr-namespace:Xamarin.Forms.BehaviorsPack;assembly=Xamarin.Forms.BehaviorsPack">
+    <MasterDetailPage.Master>
+        <ContentPage BackgroundColor="LightBlue" Title="App Series" x:Name="contentMenu"
+                     BindingContext="{Binding Source={x:Static local:App.ServiceLocator},
+            Path=MainMenuViewModel}"
+                     >
+            <StackLayout Orientation="Vertical">
+                <StackLayout BackgroundColor="WhiteSmoke"
+                             HeightRequest="100">
+                    
+                </StackLayout>
+                <ListView x:Name="lsvMenu"
+                          ItemsSource="{Binding MenuPrincipal}"
+                          RowHeight="60"
+                          SeparatorVisibility="Default"
+                          BackgroundColor="GhostWhite">
+                    <ListView.Behaviors>
+                        <behaviorspack:SelectedItemBehavior Command="{Binding PaginaSeleccionada}" />
+                    </ListView.Behaviors>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding Titulo}"
+                                           FontSize="Medium"
+                                           TextColor="Black" />
+                                   
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                
+            </StackLayout>
+        </ContentPage> 
+       </MasterDetailPage.Master>
+</MasterDetailPage>

@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PracticaXamarinART.Views.ModificarPersonajesView"
+                xmlns:local="clr-namespace:PracticaXamarinART"
+             BindingContext="{Binding Source={x:Static local:App.ServiceLocator},
+    Path=ModificarPersonajeViewModel}"
+             x:Name="PageModificar">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Welcome to Xamarin.Forms!"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            <Picker Title="Serie"
+                    ItemsSource="{Binding Series}"
+                    ItemDisplayBinding="{Binding Nombre}"
+                    SelectedItem="{Binding SelectedSerie}" />
+            <Picker Title="Serie"
+                    ItemsSource="{Binding Personajes}"
+                    ItemDisplayBinding="{Binding Nombre}"
+                    SelectedItem="{Binding SelectedPersonaje}" />
+            <Button Text="Modificar" Command="{Binding ModificarPersonaje}"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
